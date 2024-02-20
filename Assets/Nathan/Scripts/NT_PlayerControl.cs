@@ -6,7 +6,7 @@ public class NT_PlayerControl : MonoBehaviour
 {
     public NT_PlayerStats player;
     float moveSpeed = 15f;
-    float maxSpeed = 100f;
+    float maxSpeed; //= 100f;
     Rigidbody2D rb;
     public bool isGrounded;
     int jumpsRemaining;
@@ -26,7 +26,7 @@ public class NT_PlayerControl : MonoBehaviour
     void Update()
     {
         float moveSpeed = 10f * player.speedMult;
-        float maxSpeed = 20f * player.speedMult;
+        float maxSpeed = 10f * player.speedMult;
         float dashSpeed = 200f * player.speedMult;
 
         if(inDash)

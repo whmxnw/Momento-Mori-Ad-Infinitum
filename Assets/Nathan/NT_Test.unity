@@ -123,6 +123,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &859918993
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -3001423719181553188, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7461675171352964488, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: m_Name
+      value: DH_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198443918335695087, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: speedX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198443918335695087, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
+      propertyPath: speedY
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
 --- !u!1001 &1021969083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,11 +210,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 651135665293990306, guid: d7901fd8287350f4586ef86103e21abd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.003176093
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 651135665293990306, guid: d7901fd8287350f4586ef86103e21abd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15710509
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 651135665293990306, guid: d7901fd8287350f4586ef86103e21abd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -449,3 +526,4 @@ SceneRoots:
   - {fileID: 1508891930}
   - {fileID: 1081306893}
   - {fileID: 1021969083}
+  - {fileID: 859918993}
