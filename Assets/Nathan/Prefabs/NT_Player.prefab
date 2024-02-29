@@ -443,7 +443,7 @@ MonoBehaviour:
   attackMult: 1
   speedMult: 1
   dashNum: 1
-  jumpNum: 1
+  jumpNum: 2
   Armor: 0
   Fortitude: 0
 --- !u!1 &7051058133431921563
