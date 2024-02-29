@@ -12,11 +12,16 @@ public class NT_PlayerStats : MonoBehaviour
     public int dashNum = 1;
     public int jumpNum = 1;
     public int Armor = 0; //% decrease to physical attacks damage
-    public int Fortitude; //% decrease to status effect damage
+    public int Fortitude = 0; //% decrease to status effect damage
 
     void Update()
     {
         if(currentHp > maxHp) { currentHp = maxHp; }    //making sure player health doesn't overflow
+        if(currentHp <= 0)
+        {
+            //replace with death script
+            print("player died");
+        }
     }
 
     void levelUp()  //level up thing if we end up implementing levels

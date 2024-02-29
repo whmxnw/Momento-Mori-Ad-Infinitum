@@ -11,6 +11,10 @@ public class NT_HitboxController : MonoBehaviour
     private float timer;
     bool isActive;
 
+    void Start()
+    {
+        
+    }
     void Update()
     {
         if (isActive) { 
