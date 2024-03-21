@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Permissions;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,10 +11,10 @@ public class CF_RoomParameters : MonoBehaviour
     public bool isCleared = false;
     public bool isActive = false;
     public int enemyCount = 0;
-    BoxCollider2D nTrigger;
-    BoxCollider2D sTrigger;
-    BoxCollider2D eTrigger;
-    BoxCollider2D wTrigger;
+    public BoxCollider2D nTrigger;
+    public BoxCollider2D sTrigger;
+    //BoxCollider2D eTrigger;
+    //BoxCollider2D wTrigger;
 
     // touching any of these triggers should transform camera 
     // + player to correct position and activate room
