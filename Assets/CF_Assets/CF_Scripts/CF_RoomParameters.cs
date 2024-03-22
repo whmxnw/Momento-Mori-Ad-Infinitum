@@ -7,21 +7,21 @@ using UnityEngine.UIElements;
 
 public class CF_RoomParameters : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public bool isCleared = false;
-    public bool isActive = false;
-    public int enemyCount = 0;
-    public BoxCollider2D nTrigger;
-    public BoxCollider2D sTrigger;
-    //BoxCollider2D eTrigger;
-    //BoxCollider2D wTrigger;
+    [SerializeField] private int roomNumber;
 
-    // touching any of these triggers should transform camera 
-    // + player to correct position and activate room
+    public bool isCleared = false;
+    public bool isActive = true;
+    public int enemyCount = 0;
+    public BoxCollider2D sTrigger;
+
+    private void Awake()
+    {
+        CF_FloorManager.SetActiveRoom += activateRoom;
+        CF_FloorManager.SetInactiveRoom += deactivateRoom;
+    }
 
     void Start()
     {
-        nTrigger = GetComponent<BoxCollider2D>();
         sTrigger = GetComponent<BoxCollider2D>();
     }
 
@@ -33,30 +33,49 @@ public class CF_RoomParameters : MonoBehaviour
             if(enemyCount == 0 && !isCleared)
                 clearRoom();
         }
-    }
-
-    void activateRoom()
-    {
-        isActive = true;
-        if(isCleared)
+        else if(isActive == false)
         {
-            //code to spawn enemies, lock doors
-        }
-        else
-        {
-            //code to unlock doors
+            Debug.Log("Deactivated");
         }
     }
 
-    void deactiveRoom()
+    void activateRoom(int roomToActivate)
     {
-        isActive = false;
-        //shuts doors when player is outside of the room
+        if(roomToActivate == roomNumber)
+        {
+            isActive = true;
+            if (isCleared)
+            {
+                //code to spawn enemies, lock doors
+            }
+            else
+            {
+                //code to unlock doors
+            }
+        }
+    }
+
+    void deactivateRoom(int roomToDeactivate)
+    {
+        if(roomToDeactivate == roomNumber)
+        {
+            isActive = false;
+            //shuts doors when player is outside of the room
+        }
+
     }
 
     void clearRoom()
     {
         isCleared = true;
         //code to spawn room clear reward
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            CF_FloorManager.Instance.changeActive();
+        }
     }
 }
