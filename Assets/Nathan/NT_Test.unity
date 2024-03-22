@@ -171,9 +171,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1541517528992392049, guid: a0e77ebb81ccd9043a740e6d42c69cab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5646611383214085119, guid: a0e77ebb81ccd9043a740e6d42c69cab, type: 3}
       propertyPath: m_Name
       value: NT_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577650671136337779, guid: a0e77ebb81ccd9043a740e6d42c69cab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -188,18 +196,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3001423719181553188, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
-      propertyPath: currentHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5746716557212208649, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.1
@@ -243,14 +239,6 @@ PrefabInstance:
     - target: {fileID: 7461675171352964488, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
       propertyPath: m_Name
       value: DH_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198443918335695087, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
-      propertyPath: speedX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198443918335695087, guid: 01b0bae761b1b423f84d8baf6e273521, type: 3}
-      propertyPath: speedY
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

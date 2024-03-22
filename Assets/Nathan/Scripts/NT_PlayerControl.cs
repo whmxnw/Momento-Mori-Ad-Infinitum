@@ -144,7 +144,7 @@ public class NT_PlayerControl : MonoBehaviour
     }
 
     //jumping stuff
-    void OnCollisionEnter2D(Collision2D collision) //checking if touching floor
+    void OnCollisionStay2D(Collision2D collision) //checking if touching floor
     {
         if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Platform"))
         {

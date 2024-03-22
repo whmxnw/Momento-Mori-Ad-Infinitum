@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5746716557212208649}
   - component: {fileID: 7583130194463122534}
   - component: {fileID: 576974794175321605}
-  - component: {fileID: 8198443918335695087}
-  - component: {fileID: -3001423719181553188}
+  - component: {fileID: 5726166010341983044}
+  - component: {fileID: 3371610296997166604}
   - component: {fileID: 4798468484819465732}
   m_Layer: 3
   m_Name: DH_Enemy
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8198443918335695087
+--- !u!114 &5726166010341983044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,29 +124,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 7461675171352964488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dbb80f5ee6f443f5a730f873f2b4ec7, type: 3}
+  m_Script: {fileID: 11500000, guid: 44f2f948eb8d76d4c86e9e0c000c04d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
+  maxHealth: 40
+  currentHealth: 40
+--- !u!114 &3371610296997166604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461675171352964488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95814d936548fa4aac94fb8b65770a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
   grounded: 0
   chasesEnemy: 0
   avoidsFalling: 0
-  fallSpeed: 0
-  walkingSpeed: 6
---- !u!114 &-3001423719181553188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7461675171352964488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa432848517664c789cf52f73a55877a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 5000
-  currentHealth: 0
+  fallSpeed: -1
+  walkingSpeed: 3
 --- !u!61 &4798468484819465732
 BoxCollider2D:
   m_ObjectHideFlags: 0
