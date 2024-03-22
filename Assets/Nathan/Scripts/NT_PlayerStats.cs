@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,11 +13,6 @@ public class NT_PlayerStats : MonoBehaviour
     public int jumpNum = 1;
     public int Armor = 0; //% decrease to physical attacks damage
     public int Fortitude = 0; //% decrease to status effect damage
-
-    void Start()
-    {
-        currentHp = maxHp;
-    }
 
     void Update()
     {

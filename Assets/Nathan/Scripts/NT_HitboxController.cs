@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -32,8 +32,13 @@ public class NT_HitboxController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             print("attack hit");
-            DH_EnemyController enemyController = other.GetComponent<DH_EnemyController>();
-            enemyController.TakeDamage(damageAmount);
+            DH_EnemyHealth enemyHealth = other.GetComponent<DH_EnemyHealth>();
+            if (enemyHealth.currentHealth != 0)
+            {
+                print("damage");
+                enemyHealth.TakeDamage(damageAmount);
+            }
+
             AttackDirection.SetActive(false);
         }
     }
