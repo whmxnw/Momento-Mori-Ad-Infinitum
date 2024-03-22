@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class NT_PlayerControl : MonoBehaviour
     public NT_PlayerStats player;
     float moveSpeed = 15f;
     float maxSpeed; //= 100f;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public bool isGrounded;
     int jumpsRemaining;
     bool isDashing = false;
@@ -144,7 +144,7 @@ public class NT_PlayerControl : MonoBehaviour
     }
 
     //jumping stuff
-    void OnCollisionStay2D(Collision2D collision) //checking if touching floor
+    void OnCollisionEnter2D(Collision2D collision) //checking if touching floor
     {
         if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Platform"))
         {
@@ -200,6 +200,11 @@ public class NT_PlayerControl : MonoBehaviour
         {
             //WIP basic damage calc with fortitude, for magical status effects (i.e, burning)
             player.currentHp -= (int)(amount * ((100 - player.Fortitude) / 100));
+        }
+
+        if (player.currentHp <= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
 }

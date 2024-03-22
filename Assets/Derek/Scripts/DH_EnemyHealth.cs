@@ -10,7 +10,8 @@ public class DH_EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        if (currentHealth != maxHealth)
+            currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -19,15 +20,4 @@ public class DH_EnemyHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount)
-    {
-        currentHealth -= amount;
-
-        if (currentHealth <= 0)
-        {
-            //put death animation method(s) here
-
-            Destroy(gameObject);
-        }
-    }
 }
