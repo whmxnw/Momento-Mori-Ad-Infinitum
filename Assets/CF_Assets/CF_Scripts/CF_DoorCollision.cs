@@ -12,11 +12,15 @@ public class CF_DoorCollision : MonoBehaviour
         {
             if(collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log("deactivated door");
-                Renderer r = gameObject.GetComponent<Renderer>();
-                r.enabled = false;
-                Collider2D c = gameObject.GetComponent<Collider2D>();
-                c.isTrigger = true;
+                if (CF_FloorManager.Instance.enemyCount == 0)
+                {
+                    Debug.Log("deactivated door");
+                    Renderer r = gameObject.GetComponent<Renderer>();
+                    r.enabled = false;
+                    Collider2D c = gameObject.GetComponent<Collider2D>();
+                    c.isTrigger = true;
+                }
+                
             }
         }
         
@@ -31,7 +35,13 @@ public class CF_DoorCollision : MonoBehaviour
             r.enabled = true;
             Collider2D c = gameObject.GetComponent<Collider2D>();
             c.isTrigger = false;
+            EnterNewRoom();
         }
+    }
+
+    public void EnterNewRoom()
+    {
+        CF_FloorManager.Instance.enemyCount = 2;
     }
 
     // Start is called before the first frame update

@@ -6,7 +6,8 @@ using UnityEngine;
 public class CF_FloorManager : MonoBehaviour
 {
     public static CF_FloorManager Instance;
-
+    public int enemyCount = 2;
+    //public CF_RoomParameters[] rooms;
     public static event Action<int> SetActiveRoom;
     public static event Action<int> SetInactiveRoom;
 
