@@ -4,16 +4,64 @@ using UnityEngine;
 
 public class NT_Item : MonoBehaviour
 {
-    public string[] itemArray = new string[] { "item1", "item2", "item3", "item3"};
-    public GameObject item;
+    public NT_PlayerStats player;
+    public string itemName;
+    public Dictionary<string, int> statChanges = new Dictionary<string, int>();
+
+    public bool isHovering = false;
+
+    [System.Serializable]
+    public class ItemData
+    {
+        public string itemName;
+        public Dictionary<string, int> statChanges = new Dictionary<string, int>();
+    }
+
+    public List<ItemData> itemDatabase;
 
     void Start()
     {
-        item = GetComponent<GameObject>();
-        string itemName = itemArray[Random.Range(0, itemArray.Length)];
-        print(itemName);
+        if (itemDatabase.Count > 0)
+        {
+            // Get a random item from the item database
+            ItemData randomItem = itemDatabase[Random.Range(0, itemDatabase.Count)];
+            // Apply the item's name and stat changes to the item prefab
+            ApplyItemData(randomItem);
+        }
     }
-    
-    //set item sprite to match name from array, then remove from array
-    //(depending on whether we want items to be repeat pickups ala Risk of Rain, or pickups lke Isaac)
+
+    private void Update()
+    {
+        if (isHovering && Input.GetKeyDown(KeyCode.E)) 
+        {
+            PickUpItem();
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        isHovering = true;
+    }
+
+    private void OnMouseExit()
+    {
+        isHovering = false;
+    }
+
+    private void PickUpItem()
+    {
+        print("pickup");
+        foreach (KeyValuePair<string, int> statChange in statChanges)
+        {
+            player.ModifyStats(statChange.Key, statChange.Value);
+        }
+        player.AddItemToInventory(itemName);
+        Destroy(gameObject);
+    }
+
+    private void ApplyItemData(ItemData itemData)
+    {
+        itemName = itemData.itemName;
+        statChanges = itemData.statChanges;
+    }
 }

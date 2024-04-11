@@ -32,7 +32,7 @@ public class NT_HitboxController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             print("attack hit");
-            DH_EnemyHealth enemyHealth = other.GetComponent<DH_EnemyHealth>();
+            DH_EnemyHealth enemyHealth = other.gameObject.GetComponent<DH_EnemyHealth>();
             if (enemyHealth.currentHealth != 0)
             {
                 print("damage");

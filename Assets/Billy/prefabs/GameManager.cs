@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +11,9 @@ public class GameManager : MonoBehaviour
     public int playerCredits;
     public int playerDeaths;
     public bool isGameOver = false;
+    [SerializeField]
     public Scene scene;
-    public Scene startMenuScene;
-    public Scene testScene;
+    bool isMainMenu = false;
     
 
     private void Awake()
@@ -36,7 +35,10 @@ public class GameManager : MonoBehaviour
         // Initialize or set up initial game state here
         if (true)
         {
-            StartNewGame();
+            LoadLevel("Assets/Billy/scenes/MainMenu.unity");
+            scene = SceneManager.GetSceneByPath("Assets/Billy/scenes/MainMenu.unity");
+            Debug.Log(scene.name);
+            isMainMenu = true;
         }
     }
 
@@ -48,11 +50,9 @@ public class GameManager : MonoBehaviour
             RestartGame();
         }
 
-        if (scene.name == "MainMenu" && Input.GetKeyDown(KeyCode.Space))
+        if (isMainMenu && Input.GetKeyDown(KeyCode.Space))
         {
-            LoadLevel("Assets/Billy/test.unity");
-            scene = SceneManager.GetSceneByPath("Assets/Billy/test.unity");
-            Debug.Log(scene.name);
+            StartNewGame();
         }
 
         
@@ -67,13 +67,13 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
 
         // Load the initial game scene
-        
-        LoadLevel("Assets/Billy/scenes/MainMenu.unity");
-        scene = SceneManager.GetSceneByPath("Assets/Billy/scenes/MainMenu.unity");
+        isMainMenu = false;
+        Debug.Log("Clicked");
+        LoadLevel("Assets/CF_Assets/CF_Scenes/CF_SampleScene.unity");
+        scene = SceneManager.GetSceneByPath("Assets/CF_Assets/CF_Scenes/CF_SampleScene.unity");
         Debug.Log(scene.name);
-        //scene = SceneManager.GetActiveScene();
-        //Debug.Log(scene.name);
-        //Debug.Log("Scene created");
+
+
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

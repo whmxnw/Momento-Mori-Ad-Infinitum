@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NT_PlayerStats : MonoBehaviour
@@ -13,6 +15,7 @@ public class NT_PlayerStats : MonoBehaviour
     public int jumpNum = 1;
     public int Armor = 0; //% decrease to physical attacks damage
     public int Fortitude = 0; //% decrease to status effect damage
+    public List<string> inventory = new List<string>();
 
     void Update()
     {
@@ -32,5 +35,46 @@ public class NT_PlayerStats : MonoBehaviour
         attackMult += .05f;
         Armor += 2;
         Fortitude += 2;
+    }
+
+    public void AddItemToInventory(string itemName)
+    {
+        inventory.Add(itemName);
+    }
+
+    public void ModifyStats(string statName, int changeAmount)
+    {
+
+
+
+        switch (statName)
+        {
+            case "maxHp":
+                maxHp += changeAmount;
+                break;
+            case "currentHp":
+                currentHp += changeAmount;
+                break;
+            case "attackMult":
+                attackMult += changeAmount;
+                break;
+            case "speedMult":
+                speedMult += changeAmount;
+                break;
+            case "dashNum":
+                dashNum += changeAmount;
+                break;
+            case "jumpNum":
+                jumpNum += changeAmount;
+                break;
+            case "Armor":
+                Armor += changeAmount;
+                break;
+            case "Fortitude":
+                Fortitude += changeAmount;
+                break;
+            default:
+                break;
+        }
     }
 }

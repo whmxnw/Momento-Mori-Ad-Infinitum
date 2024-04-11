@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5726166010341983044}
   - component: {fileID: 3371610296997166604}
   - component: {fileID: 4798468484819465732}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: DH_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -50,8 +50,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: b6d66836d074c4b5b9ae930ce22909a7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &576974794175321605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  velocity: {x: 0, y: 0}
   grounded: 0
   chasesEnemy: 0
   avoidsFalling: 0

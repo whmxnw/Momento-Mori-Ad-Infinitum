@@ -7,7 +7,10 @@ using Random = UnityEngine.Random;
 public class DH_EnemyController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    
+    [SerializeField]
     public int direction;
+    public Vector2 velocity;
 
     public bool grounded;
     public bool chasesEnemy;
@@ -15,15 +18,18 @@ public class DH_EnemyController : MonoBehaviour
 
     public float fallSpeed = -1f;
     public float walkingSpeed = 3f;
+
+    public int attackDamage = 10;
     // Start is called before the first frame update
     void Start()
     {
         
         rb = GetComponent<Rigidbody2D>();
         GetStartingDirection();
+        Debug.Log(direction);
         grounded = true;
-        rb.velocity = new Vector2(walkingSpeed * direction, 0);
-
+        velocity = new Vector2(walkingSpeed * direction, 0);
+        rb.velocity = velocity;
     }
     
     void Update()
@@ -33,24 +39,22 @@ public class DH_EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Camera.main.WorldToViewportPoint(transform.position).x < 0.1 || Camera.main.WorldToViewportPoint(transform.position).x > 0.9)
-        {
-            ChangeDirection();
-            rb.velocity = new Vector2(walkingSpeed * direction, 0);
-        }
+        rb.velocity = velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     { 
-        if (collision.collider.gameObject.tag == "Floor")
-        {
-            grounded = true;
-            fallSpeed = 0;
-        }
 
         if (collision.collider.gameObject.tag == "Player")
         {
-            CollisionAttack(collision.collider.gameObject);
+            CollisionAttack(collision);
+        }
+
+        if (collision.collider.gameObject.layer == 6 || collision.collider.gameObject.tag == "Enemy")
+        {
+            ChangeDirection();
+            velocity = new Vector2(walkingSpeed * direction, 0);
+            rb.velocity = velocity;
         }
     }
 
@@ -67,10 +71,9 @@ public class DH_EnemyController : MonoBehaviour
     }
 
 
-    private void CollisionAttack(GameObject player)
-    { 
-        player.GetComponent<NT_PlayerStats>().currentHp -= 5;
-        KnockbackObject(player);
+    private void CollisionAttack(Collision2D collision)
+    {
+        collision.collider.gameObject.GetComponent<NT_PlayerControl>().DamagePlayer(attackDamage, "phys");
     }
 
 

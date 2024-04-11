@@ -204,5 +204,10 @@ public class NT_PlayerControl : MonoBehaviour
             //WIP basic damage calc with fortitude, for magical status effects (i.e, burning)
             player.currentHp -= (int)(amount * ((100 - player.Fortitude) / 100));
         }
+
+        if (player.currentHp <= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+        }
     }
 }
