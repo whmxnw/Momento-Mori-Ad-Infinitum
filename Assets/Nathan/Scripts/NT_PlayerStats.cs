@@ -6,16 +6,30 @@ using UnityEngine;
 
 public class NT_PlayerStats : MonoBehaviour
 {
-    public int level = 1;   //might get removed
-    public int maxHp = 100;
-    public int currentHp = 100;
-    public float attackMult = 1; //Multiplier for damage of attacks
-    public float speedMult = 1; //Multiplier for movement speed / acceleration
-    public int dashNum = 1;
-    public int jumpNum = 1;
-    public int Armor = 0; //% decrease to physical attacks damage
-    public int Fortitude = 0; //% decrease to status effect damage
+    public int level;   //might get removed
+    public int maxHp;
+    public int currentHp;
+    public float attackMult; //Multiplier for damage of attacks
+    public float speedMult; //Multiplier for movement speed / acceleration
+    public int dashNum;
+    public int jumpNum;
+    public int Armor; //% decrease to physical attacks damage
+    public int Fortitude; //% decrease to status effect damage
     public List<string> inventory = new List<string>();
+
+    void Start() 
+    {
+        level = 1;
+        maxHp = 100;
+        currentHp = 100;
+        attackMult = 1;
+        speedMult = 1;
+        dashNum = 1;
+        jumpNum = 1;
+        Armor = 0;
+        Fortitude = 0;
+        inventory.Clear();
+}
 
     void Update()
     {
@@ -37,44 +51,17 @@ public class NT_PlayerStats : MonoBehaviour
         Fortitude += 2;
     }
 
-    public void AddItemToInventory(string itemName)
+    public void AddItem(int maxHpAdd, int currentHpAdd, float attackMultAdd, float speedMultAdd, int dashNumAdd, int jumpNumAdd, int ArmorAdd, int FortitudeAdd)
     {
-        inventory.Add(itemName);
-    }
+        maxHp += maxHpAdd;
+        currentHp += currentHpAdd;
+        attackMult += attackMultAdd;
+        speedMult += speedMultAdd;
+        dashNum += dashNumAdd;
+        jumpNum += jumpNumAdd;
+        Armor += ArmorAdd;
+        Fortitude += FortitudeAdd;
 
-    public void ModifyStats(string statName, int changeAmount)
-    {
-
-
-
-        switch (statName)
-        {
-            case "maxHp":
-                maxHp += changeAmount;
-                break;
-            case "currentHp":
-                currentHp += changeAmount;
-                break;
-            case "attackMult":
-                attackMult += changeAmount;
-                break;
-            case "speedMult":
-                speedMult += changeAmount;
-                break;
-            case "dashNum":
-                dashNum += changeAmount;
-                break;
-            case "jumpNum":
-                jumpNum += changeAmount;
-                break;
-            case "Armor":
-                Armor += changeAmount;
-                break;
-            case "Fortitude":
-                Fortitude += changeAmount;
-                break;
-            default:
-                break;
-        }
+        //print(maxHp);
     }
 }

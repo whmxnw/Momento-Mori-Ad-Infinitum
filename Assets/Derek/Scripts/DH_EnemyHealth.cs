@@ -27,7 +27,7 @@ public class DH_EnemyHealth : MonoBehaviour
         {
             //put death animation method(s) here
 
-            GameManager.instance.enemyCount-=1;
+            CF_FloorManager.Instance.enemyCount-=1;
             Destroy(gameObject);
             
         }

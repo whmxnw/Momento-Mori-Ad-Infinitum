@@ -42,16 +42,6 @@ public class DH_EnemyController : MonoBehaviour
         rb.velocity = velocity;
     }
 
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Turnaround")
-        {
-            ChangeDirection();
-            velocity = new Vector2(walkingSpeed * direction, 0);
-            rb.velocity = velocity;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     { 
 
@@ -60,7 +50,7 @@ public class DH_EnemyController : MonoBehaviour
             CollisionAttack(collision);
         }
 
-        if (collision.collider.gameObject.layer == 7)
+        if (collision.collider.gameObject.layer == 6 || collision.collider.gameObject.tag == "Enemy")
         {
             ChangeDirection();
             velocity = new Vector2(walkingSpeed * direction, 0);

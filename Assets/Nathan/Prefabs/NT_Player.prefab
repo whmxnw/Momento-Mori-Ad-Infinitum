@@ -481,9 +481,10 @@ MonoBehaviour:
   attackMult: 1
   speedMult: 1
   dashNum: 1
-  jumpNum: 2
+  jumpNum: 1
   Armor: 0
   Fortitude: 0
+  inventory: []
 --- !u!1 &6106274580960258060
 GameObject:
   m_ObjectHideFlags: 0
