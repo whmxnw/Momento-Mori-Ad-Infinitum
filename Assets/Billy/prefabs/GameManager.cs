@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Scene scene;
     bool isMainMenu = false;
+    public int enemyCount = 2;
     
 
     private void Awake()

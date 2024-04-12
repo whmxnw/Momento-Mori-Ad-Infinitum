@@ -41,13 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8901242723247758910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a0fbd88d66c96a45984c3f5b19012bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7256e8fea423f4f19a7dc8ad857760f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCredits: 0
   playerDeaths: 0
   isGameOver: 0
   scene:
-    m_Handle: 0
-  startMenuScene:
     m_Handle: 0
