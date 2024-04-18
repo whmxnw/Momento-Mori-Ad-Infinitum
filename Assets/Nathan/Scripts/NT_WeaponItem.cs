@@ -1,45 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.CullingGroup;
 
-public class NT_NewItem : MonoBehaviour
+public class NT_WeaponItem : MonoBehaviour
 {
-    
     NT_PlayerStats playerStats;
     public string itemName;
-    public int maxHpAdd = 0;
-    public int currentHpAdd = 0;
-    public float attackMultAdd = 0;
-    public float speedMultAdd = 0;
-    public int dashNumAdd = 0;
-    public int jumpNumAdd = 0;
-    public int ArmorAdd = 0;
-    public int FortitudeAdd = 0;
-
+    public int damage;
+    public float recoverySpeed;
+    public string weaponType;
+    NT_WeaponController weaponController;
     float floatSpeed = 1f;
     float floatHeight = .25f;
     private Vector3 startPos;
+    //public GameObject ThisWeaponPrefab;
 
     public bool isHovering;
-
     float pickupDistance = 2f;
 
     private void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
         playerStats = player.GetComponent<NT_PlayerStats>();
+        weaponController = player.GetComponentInChildren<NT_WeaponController>();
         startPos = transform.position;
     }
+
     private void Update()
     {
         Vector3 newPos = startPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatHeight;
         transform.position = newPos;
 
-
         if (isHovering && Input.GetKeyDown(KeyCode.E) && IsPlayerInRange())
         {
-            PickUpItem();
+            PickUpWeapon();
         }
     }
 
@@ -53,11 +45,11 @@ public class NT_NewItem : MonoBehaviour
         isHovering = false;
     }
 
-    private void PickUpItem()
+    private void PickUpWeapon()
     {
-        print("pickup");
-        playerStats.AddItem(maxHpAdd, currentHpAdd, attackMultAdd, speedMultAdd, dashNumAdd, jumpNumAdd, ArmorAdd, FortitudeAdd);
-        Destroy(gameObject);
+        print("picked up " + itemName);
+        playerStats.EquipWeapon(weaponController.whichWeaponSlot, this, this.transform.position);
+        Destroy(gameObject, .1f);
     }
 
     private bool IsPlayerInRange()

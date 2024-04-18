@@ -6,10 +6,10 @@ using UnityEngine;
 public class NT_BasicProjectile : MonoBehaviour
 {
     //public NT_HitboxController hitboxController;
-    // Update is called once per frame
-    void Update()
+
+    void Start()
     {
-        
+        Invoke("MaxLifeTime", 3f);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -33,5 +33,10 @@ public class NT_BasicProjectile : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void MaxLifeTime()
+    {
+        Destroy(this.gameObject);
     }
 }

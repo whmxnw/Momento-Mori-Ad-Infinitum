@@ -83,7 +83,6 @@ MonoBehaviour:
   playerTransform: {fileID: 651135665293990306}
   playerControl: {fileID: 5379702611134302939}
   attackAngleThreshold: 0
-  attackCooldown: 0.5
   LeftAttack: {fileID: 4077473423016204882}
   RightAttack: {fileID: 1539938762280265556}
   UpAttack: {fileID: 4269768824495654525}
@@ -485,6 +484,11 @@ MonoBehaviour:
   Armor: 0
   Fortitude: 0
   inventory: []
+  weaponSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  defaultMelee: {fileID: -3292134192519886637, guid: 78027bfed3c85194cb4b424c48276d87, type: 3}
+  defaultRanged: {fileID: -3292134192519886637, guid: 6b2c390366616fc4f86421640fc9f871, type: 3}
 --- !u!1 &6106274580960258060
 GameObject:
   m_ObjectHideFlags: 0

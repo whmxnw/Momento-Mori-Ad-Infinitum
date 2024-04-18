@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class NT_HitboxController : MonoBehaviour
 {
-    public float damageAmount = 10f;
+    NT_PlayerStats playerStats;
+    NT_WeaponController weaponController;
+    float damageAmount;
     public GameObject AttackDirection;
-    float lifetime = 0.5f; // Adjust the lifetime as needed
+    float lifetime = 0.15f; // Adjust the lifetime as needed
     private float timer;
     bool isActive;
 
     void Start()
     {
-        
+        GameObject player = GameObject.FindWithTag("Player");
+        playerStats = player.GetComponent<NT_PlayerStats>();
+        weaponController = player.GetComponentInChildren<NT_WeaponController>();
+        damageAmount = playerStats.weaponSlots[weaponController.whichWeaponSlot].damage;
     }
     void Update()
     {

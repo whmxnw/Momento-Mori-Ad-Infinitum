@@ -8,99 +8,111 @@ public class NT_WeaponController : MonoBehaviour
     public Transform playerTransform;
     public NT_PlayerControl playerControl;
     public float attackAngleThreshold;
-    public float attackCooldown = .5f;
-    private float lastAttackTime;
     public GameObject LeftAttack;
     public GameObject RightAttack;
     public GameObject UpAttack;
     public GameObject DownAttack;
-    string weaponType = "melee";
+    string weaponType;
     public GameObject projectilePrefab;
+    internal int whichWeaponSlot = 0;
+
+    private float lastAttackTime = 0;
+    private float attackCooldown;
 
     void Start()
     {
-        //circleRenderer = GetComponent<LineRenderer>();
-        //DrawCircle(60, 5f);
+        Invoke("GetWeapon", .1f);
+        //weaponType = playerControl.player.weaponSlots[0].weaponType;
+        
     }
 
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.Q))
+        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
+        attackCooldown = GetRecovery();
+        //weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
+        if (Time.time - lastAttackTime >= attackCooldown)
         {
-            if(weaponType == "melee")
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                print("changed to ranged");
-                weaponType = "ranged";
+                if (whichWeaponSlot == 0)
+                {
+
+                    whichWeaponSlot = 1;
+                    //weaponType = playerControl.player.weaponSlots[1].weaponType;
+                    print("swapped to 2nd weapon slot:" + weaponType);
+                }
+                else
+                {
+
+                    whichWeaponSlot = 0;
+                    //weaponType = playerControl.player.weaponSlots[0].weaponType;
+                    print("swapped to 1st weapon slot:" + weaponType);
+                }
             }
-            else
+            
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                print("changed to melee");
-                weaponType = "melee";
-            }
-        }
-
-        //UpdateLineRendererPositions(90);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (weaponType == "melee")
-            {
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3 direction = mousePosition - playerTransform.position;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-                angle = (angle + 360) % 360;
-                if (angle > 180) angle -= 360;
-
-                //determining attack direction based on angle
-                if (angle > -45 && angle <= 45)
+                if (weaponType == "melee")
                 {
-                    //attack right
+                    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3 direction = mousePosition - playerTransform.position;
+                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                    Attack("Right");
+                    angle = (angle + 360) % 360;
+                    if (angle > 180) angle -= 360;
+
+                    //determining attack direction based on angle
+                    if (angle > -45 && angle <= 45)
+                    {
+                        //attack right
+
+                        Attack("Right");
+                    }
+                    else if (angle > 45 && angle <= 135)
+                    {
+                        //attack up
+
+                        Attack("Up");
+                    }
+                    else if (angle > -135 && angle <= -45)
+                    {
+                        //attack down
+
+                        Attack("Down");
+                    }
+                    else if ((angle > 135 && angle <= 180) || (angle >= -180 && angle <= -135))
+                    {
+                        //attack Left
+
+                        Attack("Left");
+                    }
+
+
                 }
-                else if (angle > 45 && angle <= 135)
+                if (weaponType == "ranged")
                 {
-                    //attack up
+                    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mousePosition.z = 0f;
 
-                    Attack("Up");
-                }
-                else if (angle > -135 && angle <= -45)
-                {
-                    //attack down
+                    // Define spawn radius
+                    float spawnRadius = 1.5f;
 
-                    Attack("Down");
-                }
-                else if ((angle > 135 && angle <= 180) || (angle >= -180 && angle <= -135))
-                {
-                    //attack Left
+                    // Calculate direction towards mouse
+                    Vector3 direction = (mousePosition - playerTransform.position).normalized;
 
-                    Attack("Left");
-                }
+                    // Calculate spawn position
+                    Vector3 spawnPosition = playerTransform.position + direction * spawnRadius;
 
+                    GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+                    Rigidbody2D projectileRB = projectile.GetComponent<Rigidbody2D>();
 
-            }
-            if (weaponType == "ranged")
-            {
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                mousePosition.z = 0f;
-
-                // Define spawn radius
-                float spawnRadius = 1.5f;
-
-                // Calculate direction towards mouse
-                Vector3 direction = (mousePosition - playerTransform.position).normalized;
-
-                // Calculate spawn position
-                Vector3 spawnPosition = playerTransform.position + direction * spawnRadius;
-
-                GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-                Rigidbody2D projectileRB = projectile.GetComponent<Rigidbody2D>();
-
-                if (projectileRB != null)
-                {
-                    // Set velocity towards mouse
-                    projectileRB.velocity = direction * 1000f * Time.deltaTime;
+                    if (projectileRB != null)
+                    {
+                        // Set velocity towards mouse
+                        projectileRB.velocity = direction * 1000f * Time.deltaTime;
+                    }
+                    lastAttackTime = Time.time;
                 }
             }
         }
@@ -174,4 +186,15 @@ public class NT_WeaponController : MonoBehaviour
         // Draw circle line
         DrawCircleLine(lineRenderer);
     }*/
+
+    void GetWeapon()
+    {
+        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
+        print("starting weapon is: " + weaponType);
+    }
+
+    float GetRecovery()
+    {
+        return playerControl.player.weaponSlots[whichWeaponSlot].recoverySpeed;
+    }
 }

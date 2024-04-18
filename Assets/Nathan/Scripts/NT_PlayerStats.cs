@@ -16,6 +16,9 @@ public class NT_PlayerStats : MonoBehaviour
     public int Armor; //% decrease to physical attacks damage
     public int Fortitude; //% decrease to status effect damage
     public List<string> inventory = new List<string>();
+    public NT_WeaponItem[] weaponSlots = new NT_WeaponItem[2];
+    public NT_WeaponItem defaultMelee;
+    public NT_WeaponItem defaultRanged;
 
     void Start() 
     {
@@ -29,6 +32,8 @@ public class NT_PlayerStats : MonoBehaviour
         Armor = 0;
         Fortitude = 0;
         inventory.Clear();
+        weaponSlots[0] = defaultMelee;
+        weaponSlots[1] = defaultRanged;
 }
 
     void Update()
@@ -63,5 +68,14 @@ public class NT_PlayerStats : MonoBehaviour
         Fortitude += FortitudeAdd;
 
         //print(maxHp);
+    }
+
+    public void EquipWeapon(int weaponSlot, NT_WeaponItem weapon, Vector2 position)
+    {
+        //NT_WeaponItem temp = weaponSlots[weaponSlot];
+        //GameObject droppedWeapon = Instantiate(weaponSlots[weaponSlot].ThisWeaponPrefab, position, Quaternion.identity);
+        weaponSlots[weaponSlot] = weapon;
+        //GameObject droppedWeapon = Instantiate(temp.ThisWeaponPrefab, position, Quaternion.identity);
+        //Destroy(weapon.gameObject);
     }
 }
