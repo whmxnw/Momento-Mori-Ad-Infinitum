@@ -6,21 +6,19 @@ using UnityEngine;
 public class CF_DoorCollision : MonoBehaviour
 {
     bool isLocked = false;
-    bool cleared = false;
     void OnCollisionStay2D(Collision2D collision)
     {
         if(isLocked==false)
         {
             if(collision.gameObject.CompareTag("Player"))
             {
-                if (CF_FloorManager.Instance.enemyCount <= 0)
+                if (CF_FloorManager.Instance.enemyCount == 0)
                 {
                     Debug.Log("deactivated door");
                     Renderer r = gameObject.GetComponent<Renderer>();
                     r.enabled = false;
                     Collider2D c = gameObject.GetComponent<Collider2D>();
                     c.isTrigger = true;
-                    cleared = true;
                 }
                 
             }
@@ -43,11 +41,7 @@ public class CF_DoorCollision : MonoBehaviour
 
     public void EnterNewRoom()
     {
-        if (CF_FloorManager.Instance.enemyCount == 0)
-        {
-            CF_FloorManager.Instance.enemyCount = 2;
-            cleared = false;
-        }
+        CF_FloorManager.Instance.enemyCount = 2;
     }
 
     // Start is called before the first frame update
@@ -59,9 +53,6 @@ public class CF_DoorCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cleared)
-        {
-
-        }
+        
     }
 }
