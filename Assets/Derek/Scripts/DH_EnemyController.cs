@@ -14,16 +14,15 @@ public class DH_EnemyController : MonoBehaviour
 
     public bool grounded;
     public bool chasesEnemy;
-    public bool avoidsFalling;
 
     public float fallSpeed = -1f;
     public float walkingSpeed = 3f;
 
     public int attackDamage = 10;
-    // Start is called before the first frame update
+
+    //Initial values
     void Start()
     {
-        
         rb = GetComponent<Rigidbody2D>();
         GetStartingDirection();
         Debug.Log(direction);
@@ -42,6 +41,7 @@ public class DH_EnemyController : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    //handle collisions as needed
     private void OnCollisionEnter2D(Collision2D collision)
     { 
 
@@ -50,7 +50,7 @@ public class DH_EnemyController : MonoBehaviour
             CollisionAttack(collision);
         }
 
-        if (collision.collider.gameObject.layer == 6 || collision.collider.gameObject.tag == "Enemy")
+        if (collision.collider.gameObject.layer == 7 || collision.collider.gameObject.tag == "Turnaround")
         {
             ChangeDirection();
             velocity = new Vector2(walkingSpeed * direction, 0);
@@ -58,26 +58,42 @@ public class DH_EnemyController : MonoBehaviour
         }
     }
 
-
     private void OnCollisionExit2D(Collision2D collision)
+    {
+
+    }
+
+    //handle triggers as needed
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Turnaround")
+        {
+            ChangeDirection();
+            velocity = new Vector2(walkingSpeed * direction, 0);
+            rb.velocity = velocity;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
         
     }
 
-
+    //flip enemy x-direction
     private void ChangeDirection()
     {
         direction *= -1;
     }
 
 
+    //attack player upon collision
     private void CollisionAttack(Collision2D collision)
     {
         collision.collider.gameObject.GetComponent<NT_PlayerControl>().DamagePlayer(attackDamage, "phys");
     }
 
 
-    //performs knockback effect on player when certain attacks are performed
+    //perform knockback effect on player when certain attacks are performed
     private void KnockbackObject(GameObject player)
     {
         Rigidbody2D player_rb = player.GetComponent<Rigidbody2D>();
