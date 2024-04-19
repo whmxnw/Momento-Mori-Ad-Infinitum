@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5726166010341983044}
   - component: {fileID: 3371610296997166604}
   - component: {fileID: 4798468484819465732}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: DH_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,9 +145,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   grounded: 0
   chasesEnemy: 0
-  avoidsFalling: 0
   fallSpeed: -1
   walkingSpeed: 3
+  attackDamage: 10
 --- !u!61 &4798468484819465732
 BoxCollider2D:
   m_ObjectHideFlags: 0

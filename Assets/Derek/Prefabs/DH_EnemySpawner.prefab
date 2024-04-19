@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2764866805782501285}
+  - component: {fileID: 4596611803247628724}
   m_Layer: 0
-  m_Name: EnemySpawnPoint
+  m_Name: DH_EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,3 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4596611803247628724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182360769368420382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1169ab956f73e47ac8a15d4c3c6beb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumSpawns: 1
+  maximumSpawns: 3
+  enemyType: {fileID: 7461675171352964488, guid: c54225f565a792d4fb73bcb200d2df8f, type: 3}

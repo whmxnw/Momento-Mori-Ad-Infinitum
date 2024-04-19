@@ -43,11 +43,11 @@ public class DH_EnemyController : MonoBehaviour
 
     //handle collisions as needed
     private void OnCollisionEnter2D(Collision2D collision)
-    { 
+    {
 
         if (collision.collider.gameObject.tag == "Player")
         {
-            CollisionAttack(collision);
+            CollisionAttack(collision.collider.gameObject);
         }
 
         if (collision.collider.gameObject.layer == 7 || collision.collider.gameObject.tag == "Turnaround")
@@ -87,9 +87,9 @@ public class DH_EnemyController : MonoBehaviour
 
 
     //attack player upon collision
-    private void CollisionAttack(Collision2D collision)
+    public void CollisionAttack(GameObject target)
     {
-        collision.collider.gameObject.GetComponent<NT_PlayerControl>().DamagePlayer(attackDamage, "phys");
+        target.GetComponent<NT_PlayerControl>().DamagePlayer(attackDamage, "phys");
     }
 
 
