@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class NT_WeaponItem : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class NT_WeaponItem : MonoBehaviour
     float floatSpeed = 1f;
     float floatHeight = .25f;
     private Vector3 startPos;
-    //public GameObject ThisWeaponPrefab;
 
     public bool isHovering;
     float pickupDistance = 2f;
@@ -48,8 +48,8 @@ public class NT_WeaponItem : MonoBehaviour
     private void PickUpWeapon()
     {
         print("picked up " + itemName);
-        playerStats.EquipWeapon(weaponController.whichWeaponSlot, this, this.transform.position);
-        Destroy(gameObject, .1f);
+        playerStats.EquipWeapon(weaponController.whichWeaponSlot, this.gameObject, transform.position);
+        this.gameObject.SetActive(false);
     }
 
     private bool IsPlayerInRange()

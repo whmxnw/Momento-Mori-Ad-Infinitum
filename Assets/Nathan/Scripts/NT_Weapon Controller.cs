@@ -28,7 +28,7 @@ public class NT_WeaponController : MonoBehaviour
 
     void Update()
     {
-        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
+        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].GetComponent<NT_WeaponItem>().weaponType;
         attackCooldown = GetRecovery();
         //weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
         if (Time.time - lastAttackTime >= attackCooldown)
@@ -189,12 +189,12 @@ public class NT_WeaponController : MonoBehaviour
 
     void GetWeapon()
     {
-        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].weaponType;
+        weaponType = playerControl.player.weaponSlots[whichWeaponSlot].GetComponent<NT_WeaponItem>().weaponType;
         print("starting weapon is: " + weaponType);
     }
 
     float GetRecovery()
     {
-        return playerControl.player.weaponSlots[whichWeaponSlot].recoverySpeed;
+        return playerControl.player.weaponSlots[whichWeaponSlot].GetComponent<NT_WeaponItem>().recoverySpeed;
     }
 }

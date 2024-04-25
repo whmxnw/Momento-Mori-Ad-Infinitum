@@ -285,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 4077473423016204882}
 --- !u!1 &5646611383214085119
 GameObject:
@@ -487,8 +486,8 @@ MonoBehaviour:
   weaponSlots:
   - {fileID: 0}
   - {fileID: 0}
-  defaultMelee: {fileID: -3292134192519886637, guid: 78027bfed3c85194cb4b424c48276d87, type: 3}
-  defaultRanged: {fileID: -3292134192519886637, guid: 6b2c390366616fc4f86421640fc9f871, type: 3}
+  defaultMelee: {fileID: 0}
+  defaultRanged: {fileID: 0}
 --- !u!1 &6106274580960258060
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 4269768824495654525}
 --- !u!61 &7577650671136337779
 BoxCollider2D:
@@ -647,7 +645,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 4269768824495654525}
 --- !u!1 &7051058133431921563
 GameObject:
@@ -782,7 +779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 1539938762280265556}
 --- !u!1 &7946836373595317599
 GameObject:
@@ -915,7 +911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 7946836373595317599}
 --- !u!61 &1541517528992392049
 BoxCollider2D:
@@ -974,5 +969,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe466bc12e590f4bb72cedc2cb27549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
   AttackDirection: {fileID: 7946836373595317599}

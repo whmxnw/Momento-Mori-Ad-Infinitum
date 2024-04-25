@@ -18,7 +18,8 @@ public class NT_HitboxController : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         playerStats = player.GetComponent<NT_PlayerStats>();
         weaponController = player.GetComponentInChildren<NT_WeaponController>();
-        damageAmount = playerStats.weaponSlots[weaponController.whichWeaponSlot].damage;
+        //damageAmount = playerStats.weaponSlots[weaponController.whichWeaponSlot].damage;
+        damageAmount = playerStats.weaponSlots[weaponController.whichWeaponSlot].GetComponent<NT_WeaponItem>().damage;
     }
     void Update()
     {
