@@ -25,7 +25,7 @@ public class CF_RoomController : MonoBehaviour
     public List<CF_Room> loadedRooms = new List<CF_Room>();
 
     bool isLoadingRoom = false;
-
+    bool updatedRooms = false;
     CF_Room currRoom;
 
     void Awake()
@@ -35,9 +35,14 @@ public class CF_RoomController : MonoBehaviour
 
     void Start()
     {
+        /*
+
+        testing manual room placement
+
         LoadRoom("Start",0,0);
         LoadRoom("Start",0,-1);
         LoadRoom("Start",0,-2);
+        */
     }
 
     void Update()
@@ -54,6 +59,14 @@ public class CF_RoomController : MonoBehaviour
 
         if(loadRoomQueue.Count == 0)
         {
+            if(!updatedRooms)
+            {
+                foreach (CF_Room room in loadedRooms)
+                {
+                    room.RemoveUnconnectedDoors();
+                }
+                updatedRooms = true;
+            }
             return;
         }
 
@@ -91,25 +104,38 @@ public class CF_RoomController : MonoBehaviour
 
     public void RegisterRoom(CF_Room room)
     {
-        room.transform.position = new Vector2(currentLoadRoomData.X*room.Width,currentLoadRoomData.Y*room.Height);
-        room.X = currentLoadRoomData.X;
-        room.Y = currentLoadRoomData.Y;
-        room.name = currentWorldName + "-" + currentLoadRoomData.name + " " + room.X + " , " + room.Y;
-        room.transform.parent = transform;
-
-        isLoadingRoom = false;
-
-        if(loadedRooms.Count == 0)
+        if(!DoesRoomExist(currentLoadRoomData.X, currentLoadRoomData.Y))
         {
-            CF_CameraController.instance.currRoom = room;
-        }
+            room.transform.position = new Vector2(currentLoadRoomData.X*room.Width,currentLoadRoomData.Y*room.Height);
+            room.X = currentLoadRoomData.X;
+            room.Y = currentLoadRoomData.Y;
+            room.name = currentWorldName + "-" + currentLoadRoomData.name + " " + room.X + " , " + room.Y;
+            room.transform.parent = transform;
 
-        loadedRooms.Add(room);
+            isLoadingRoom = false;
+
+            if(loadedRooms.Count == 0)
+            {
+                CF_CameraController.instance.currRoom = room;
+            }
+
+            loadedRooms.Add(room);
+        }
+        else
+        {
+            Destroy(room.gameObject);
+            isLoadingRoom = false;
+        }
     }
 
     public bool DoesRoomExist(int x, int y)
     {
         return loadedRooms.Find( item => item.X == x && item.Y == y ) != null;
+    } 
+
+    public CF_Room FindRoom(int x, int y)
+    {
+        return loadedRooms.Find( item => item.X == x && item.Y == y );
     } 
 
     public void OnPlayerEnterRoom(CF_Room room)
