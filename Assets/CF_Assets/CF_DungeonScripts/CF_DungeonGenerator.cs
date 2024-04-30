@@ -21,14 +21,14 @@ public class CF_DungeonGenerator : MonoBehaviour
         CF_RoomController.instance.LoadRoom("Start",0,0); 
         foreach(Vector2Int roomLocation in rooms)
         {
-            CF_RoomController.instance.LoadRoom("Start",roomLocation.x,roomLocation.y); //to be replaced with random room from list
+            CF_RoomController.instance.LoadRoom("Normal",roomLocation.x,roomLocation.y); //to be replaced with random room from list
         }
         int itemRoomSpawn = Random.Range(1,CF_DungeonCrawlerController.iterations-1);
-        CF_RoomController.instance.LoadRoom("Start",1,-1*itemRoomSpawn);    //to be replaced with item room
+        CF_RoomController.instance.LoadRoom("Item",1,-1*itemRoomSpawn);    //to be replaced with item room
         int shopRoomSpawn = Random.Range(1,CF_DungeonCrawlerController.iterations-1);
-        CF_RoomController.instance.LoadRoom("Start",-1,-1*shopRoomSpawn); //to be replaced with shop room
+        CF_RoomController.instance.LoadRoom("Shop",-1,-1*shopRoomSpawn); //to be replaced with shop room
         int bossRoomSpawn = CF_DungeonCrawlerController.iterations+1;
-        CF_RoomController.instance.LoadRoom("Start",0,-1*bossRoomSpawn);  // to be replaced with boss room spawn
+        CF_RoomController.instance.LoadRoom("Boss",0,-1*bossRoomSpawn);  // to be replaced with boss room spawn
         
     }
 

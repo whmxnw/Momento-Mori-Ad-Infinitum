@@ -16,8 +16,8 @@ public class CF_DungeonDoor : MonoBehaviour
     public GameObject doorCollider;
 
     private GameObject player;
-    private float widthOffset = 1.75f; //may need to be changed after resizing player
-    private float heightOffset = 3f;
+    private float widthOffset = 3.5f; //may need to be changed after resizing player
+    private float heightOffset = 6f;
 
     private void Start()
     {
