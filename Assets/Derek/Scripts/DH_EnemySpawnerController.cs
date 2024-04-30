@@ -10,7 +10,7 @@ public class EnemySpawnController : MonoBehaviour
 
     void Start()
     {
-        SpawnEnemies();
+        Invoke("SpawnEnemies", 1f);
     }
 
     void SpawnEnemies()
