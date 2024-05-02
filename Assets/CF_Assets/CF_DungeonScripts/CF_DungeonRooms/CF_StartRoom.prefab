@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 9032811423082181566}
   m_Layer: 0
   m_Name: EDoor
-  m_TagString: Untagged
+  m_TagString: Turnaround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 6874166467203973984}
   m_Layer: 6
   m_Name: Static Sprite (6)
-  m_TagString: Untagged
+  m_TagString: Turnaround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,8 +534,8 @@ Transform:
   m_GameObject: {fileID: 4753054710078589282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.048053753, y: 0.011305862, z: -0.042483807}
-  m_LocalScale: {x: 1.9895369, y: 0.485615, z: 1}
+  m_LocalPosition: {x: 0.04805, y: 0.0127, z: -0.042483807}
+  m_LocalScale: {x: 1.9895369, y: 0.21803118, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8795922865025649297}
@@ -692,8 +692,8 @@ Transform:
   m_GameObject: {fileID: 6423637043543303982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 10.003373, y: 0.44952956, z: -0.04248383}
-  m_LocalScale: {x: 8, y: 1, z: 1}
+  m_LocalPosition: {x: 10.0327, y: 0.44952956, z: -0.04248383}
+  m_LocalScale: {x: 8, y: 0.48145953, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4620980109691488999}
@@ -850,8 +850,8 @@ Transform:
   m_GameObject: {fileID: 7734231486129134637}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -11.096627, y: 0.44952956, z: -0.04248383}
-  m_LocalScale: {x: 8, y: 1, z: 1}
+  m_LocalPosition: {x: -10.9971, y: 0.44952956, z: -0.04248383}
+  m_LocalScale: {x: 8, y: 0.8009, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4620980109691488999}
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 7177779348453809349}
   m_Layer: 0
   m_Name: WDoor
-  m_TagString: Untagged
+  m_TagString: Turnaround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1258,8 +1258,8 @@ Transform:
   m_GameObject: {fileID: 8981496777347796680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.048053753, y: -0.025114354, z: -0.042483807}
-  m_LocalScale: {x: 1.9895369, y: 0.485615, z: 1}
+  m_LocalPosition: {x: 0.04805, y: -0.0674, z: -0.042483807}
+  m_LocalScale: {x: 1.9895369, y: 0.40102085, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4911206126861538133}
