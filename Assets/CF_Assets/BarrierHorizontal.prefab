@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4141052108860949916}
   - component: {fileID: 4964387663381708429}
   - component: {fileID: 397564131946507697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -171,9 +171,9 @@ GameObject:
   - component: {fileID: 4226910332076664583}
   - component: {fileID: 300034028892743807}
   - component: {fileID: 7129672715824779081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BarrierHorizontal
-  m_TagString: Untagged
+  m_TagString: Turnaround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
