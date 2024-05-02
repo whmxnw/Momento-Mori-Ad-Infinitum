@@ -20,21 +20,27 @@ public class NT_NewItem : MonoBehaviour
     float floatSpeed = 1f;
     float floatHeight = .25f;
     private Vector3 startPos;
+    private bool afterStart = false;
 
     public bool isHovering;
 
-    float pickupDistance = 2f;
+    float pickupDistance = 3f;
 
     private void Start()
     {
         GameObject player = GameObject.FindWithTag("Player");
         playerStats = player.GetComponent<NT_PlayerStats>();
         startPos = transform.position;
+        Invoke("Wait", 1f);
     }
+
     private void Update()
     {
-        Vector3 newPos = startPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-        transform.position = newPos;
+        if (afterStart)
+        {
+            Vector3 newPos = startPos + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * floatHeight;
+            transform.position = newPos;
+        }
 
 
         if (isHovering && Input.GetKeyDown(KeyCode.E) && IsPlayerInRange())
@@ -64,5 +70,12 @@ public class NT_NewItem : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, playerStats.transform.position);
         return distance <= pickupDistance;
+    }
+
+    private void Wait()
+    {
+        startPos = transform.position;
+        print(startPos);
+        afterStart = true;
     }
 }
