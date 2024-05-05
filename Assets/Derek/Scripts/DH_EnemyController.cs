@@ -16,7 +16,7 @@ public class DH_EnemyController : MonoBehaviour
     public bool chasesEnemy;
 
     public float fallSpeed = -1f;
-    public float walkingSpeed = 3f;
+    public float moveSpeed = 3f;
 
     public int attackDamage = 10;
 
@@ -25,20 +25,18 @@ public class DH_EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GetStartingDirection();
-        Debug.Log(direction);
-        grounded = true;
-        velocity = new Vector2(walkingSpeed * direction, 0);
-        rb.velocity = velocity;
     }
     
     void Update()
     {
-        
+        if (direction < 0)
+            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = velocity;
     }
 
     //handle collisions as needed
@@ -53,30 +51,12 @@ public class DH_EnemyController : MonoBehaviour
         if (collision.collider.gameObject.tag == "Enemy" || collision.collider.gameObject.tag == "Turnaround")
         {
             ChangeDirection();
-            velocity = new Vector2(walkingSpeed * direction, 0);
-            rb.velocity = velocity;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
 
-    }
-
-    //handle triggers as needed
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Turnaround")
-        {
-            ChangeDirection();
-            velocity = new Vector2(walkingSpeed * direction, 0);
-            rb.velocity = velocity;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
     }
 
     //flip enemy x-direction
