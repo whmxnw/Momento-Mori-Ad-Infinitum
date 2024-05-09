@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3371610296997166604}
   - component: {fileID: 4798468484819465732}
   - component: {fileID: 160902441858353936}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: DH_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   currentHealth: 40
+  enemySpawner: {fileID: 0}
 --- !u!114 &3371610296997166604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7461675171352964488}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b6d66836d074c4b5b9ae930ce22909a7, type: 2}
   m_IncludeLayers:

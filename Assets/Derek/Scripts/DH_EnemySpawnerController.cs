@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnController : MonoBehaviour
+public class DH_EnemySpawnerController : MonoBehaviour
 {
     public int minimumSpawns;
     public int maximumSpawns;
+    public int totalSpawns;
     public GameObject enemyType;
 
     void Start()
@@ -15,10 +16,10 @@ public class EnemySpawnController : MonoBehaviour
 
     void SpawnEnemies()
     {
-        int spawnCount = Random.Range(minimumSpawns, maximumSpawns);
+        totalSpawns = Random.Range(minimumSpawns, maximumSpawns);
         Vector3 spawnPoint = (gameObject.transform.position);
         spawnPoint.z = 0;
-        for (int i = 0; i < spawnCount; i++)
+        for (int i = 0; i < totalSpawns; i++)
             Instantiate(enemyType, spawnPoint, new Quaternion(0, 0, 0, 0));
     }
 

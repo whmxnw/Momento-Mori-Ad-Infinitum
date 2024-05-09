@@ -50,7 +50,7 @@ public class DH_EnemyController : MonoBehaviour
             CollisionAttack(collision.collider.gameObject);
         }
 
-        if (collision.collider.gameObject.tag == "Enemy" || collision.collider.gameObject.tag == "Turnaround")
+        if (collision.collider.gameObject.tag == "Turnaround")
         {
             ChangeDirection();
         }
