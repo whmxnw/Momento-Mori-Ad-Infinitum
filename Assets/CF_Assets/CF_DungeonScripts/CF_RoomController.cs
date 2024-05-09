@@ -26,7 +26,7 @@ public class CF_RoomController : MonoBehaviour
 
     bool isLoadingRoom = false;
     bool updatedRooms = false;
-    CF_Room currRoom;
+    public CF_Room currRoom;
 
     void Awake()
     {
@@ -48,8 +48,39 @@ public class CF_RoomController : MonoBehaviour
     void Update()
     {
         UpdateRoomQueue();
+        UpdateRooms();
+
     }
 
+    public void UpdateRooms()
+    {
+        foreach(CF_Room room in loadedRooms)
+        {
+            if(currRoom != room)
+            {
+                int enemies = GameObject.FindWithTag("EnemySpawner").GetComponent<DH_EnemySpawnerController>().totalSpawns;
+                if(enemies != 0)
+                {
+                    foreach(CF_DungeonDoor door in room.GetComponentsInChildren<CF_DungeonDoor>())
+                    {
+                        door.doorCollider.SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                int enemies = GameObject.FindWithTag("EnemySpawner").GetComponent<DH_EnemySpawnerController>().totalSpawns;
+                if(enemies > 0)
+                {
+                    foreach(CF_DungeonDoor door in room.GetComponentsInChildren<CF_DungeonDoor>())
+                    {
+                        door.doorCollider.SetActive(false);
+                    }
+                }
+            }
+        }
+    }
+    
     void UpdateRoomQueue()
     {
         if(isLoadingRoom)

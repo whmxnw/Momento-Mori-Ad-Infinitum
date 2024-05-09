@@ -11,7 +11,7 @@ public class CF_Room : MonoBehaviour
     
     public int Y;
 
-    public EnemySpawnController spawner;
+    //public DH_EnemySpawnController spawner;
 
     public CF_DungeonDoor leftDoor;
     public CF_DungeonDoor rightDoor;
