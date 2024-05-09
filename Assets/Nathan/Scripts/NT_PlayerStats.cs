@@ -74,6 +74,7 @@ public class NT_PlayerStats : MonoBehaviour
     {
         weaponSlots[weaponSlot].gameObject.transform.position = position;
         weaponSlots[weaponSlot].gameObject.SetActive(true);
-        weaponSlots[weaponSlot] = weapon;
+        weaponSlots[0] = weapon;
+        weaponSlots[1] = weapon;
     }
 }

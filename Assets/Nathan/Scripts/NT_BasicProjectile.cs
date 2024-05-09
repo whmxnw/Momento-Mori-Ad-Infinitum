@@ -18,9 +18,11 @@ public class NT_BasicProjectile : MonoBehaviour
         {
             print("attack hit");
             DH_EnemyHealth enemyHealth = other.gameObject.GetComponent<DH_EnemyHealth>();
+            DH_EnemyController enemyController = other.gameObject.GetComponent<DH_EnemyController>();
             if (enemyHealth.currentHealth != 0)
             {
                 print("damage");
+                enemyController.IsStunned(this.gameObject.GetComponent<Rigidbody2D>().velocity * .5f);
                 enemyHealth.TakeDamage(10);
             }
             Destroy(this.gameObject);

@@ -40,20 +40,20 @@ public class NT_WeaponController : MonoBehaviour
 
                     whichWeaponSlot = 1;
                     //weaponType = playerControl.player.weaponSlots[1].weaponType;
-                    print("swapped to 2nd weapon slot:" + weaponType);
+                    
                 }
                 else
                 {
 
                     whichWeaponSlot = 0;
                     //weaponType = playerControl.player.weaponSlots[0].weaponType;
-                    print("swapped to 1st weapon slot:" + weaponType);
+                
                 }
             }
             
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (weaponType == "melee")
+                if (whichWeaponSlot == 0)
                 {
                     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector3 direction = mousePosition - playerTransform.position;
@@ -90,7 +90,7 @@ public class NT_WeaponController : MonoBehaviour
 
 
                 }
-                if (weaponType == "ranged")
+                if (whichWeaponSlot == 1)
                 {
                     Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     mousePosition.z = 0f;

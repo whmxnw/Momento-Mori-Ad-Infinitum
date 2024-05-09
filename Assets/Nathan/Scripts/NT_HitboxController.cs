@@ -39,9 +39,11 @@ public class NT_HitboxController : MonoBehaviour
         {
             print("attack hit");
             DH_EnemyHealth enemyHealth = other.gameObject.GetComponent<DH_EnemyHealth>();
+            DH_EnemyController enemyController = other.gameObject.GetComponent<DH_EnemyController>();
             if (enemyHealth.currentHealth != 0)
             {
                 print("damage");
+                enemyController.IsStunned(new Vector2(7f, 3f));
                 enemyHealth.TakeDamage(damageAmount);
             }
 

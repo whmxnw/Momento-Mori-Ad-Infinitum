@@ -187,7 +187,7 @@ public class NT_PlayerControl : MonoBehaviour
     {
         print("jump");
         rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * (moveSpeed / 2.25f) * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
         jumpsRemaining--;
     }
 
