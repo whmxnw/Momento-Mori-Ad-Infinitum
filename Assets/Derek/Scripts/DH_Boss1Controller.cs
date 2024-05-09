@@ -19,7 +19,15 @@ public class DH_Boss1Controller : MonoBehaviour
     public Vector2 lastLocation;
     public int direction;
 
+    private float lastAttackTime = 0f;
+    private float attackCooldown = 2f;
+
     public GameObject player = null;
+    public GameObject Melee1_AttackLeft;
+    public GameObject Melee1_AttackRight;
+    public GameObject Melee2_AttackLeft;
+    public GameObject Melee2_AttackRight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,26 +42,30 @@ public class DH_Boss1Controller : MonoBehaviour
         direction = -1;
         targetDistance = GetTargetDistance();
         lastLocation = new Vector2(transform.position.x, transform.position.y);
-        
+        Patrol();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //check if player is in chasing range
+        
         if (Mathf.Abs(player.transform.position.x - transform.position.x) <= detectionRange)
-            if(Mathf.Abs(player.transform.position.x - transform.position.x) <= meleeRange)
-                //melee attack
-            else 
-                //chase player
-
-        if (targetDistance <= Mathf.Abs(lastLocation.x - transform.position.x))
-            TurnAround();
-
-        if (direction < 0)
-            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        {
+            ChasePlayer();    
+        }
+        
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) <= meleeRange && Time.time - lastAttackTime >= attackCooldown)
+        {
+            PauseMovement();
+            MeleeAttack1();
+            ResumeMovement();
+        }
         else
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+        {
+            Patrol();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -64,9 +76,10 @@ public class DH_Boss1Controller : MonoBehaviour
             
         }
 
-        if (collision.collider.gameObject.tag == "Enemy" || collision.collider.gameObject.tag == "Turnaround")
+        if (collision.collider.gameObject.tag == "Turnaround")
         {
             TurnAround();
+            Patrol();
         }
     }
 
@@ -75,11 +88,14 @@ public class DH_Boss1Controller : MonoBehaviour
 
     }
 
-    void TurnAround()
+    void ChasePlayer()
     {
-        direction = -direction;
-        targetDistance = GetTargetDistance();
-        lastLocation = new Vector2(transform.position.x, transform.position.y);
+        direction = (player.transform.position.x < transform.position.x) ? -1 : 1;
+
+        if (direction < 0)
+            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
 
     float GetTargetDistance()
@@ -87,8 +103,62 @@ public class DH_Boss1Controller : MonoBehaviour
         return Random.Range(minDistance, maxDistance);
     }
 
-    void FollowPlayer()
+    void MeleeAttack1()
     {
+        transform.Translate(Vector3.zero);
 
+        if (direction < 0)
+            Melee1_AttackLeft.SetActive(true);
+        else
+            Melee1_AttackRight.SetActive(true);
+
+        lastAttackTime = Time.time;
+    }
+
+    void MeleeAttack2()
+    {
+        transform.Translate(Vector3.zero);
+
+        if (direction < 0)
+            Melee2_AttackLeft.SetActive(true);
+        else
+            Melee2_AttackRight.SetActive(true);
+
+        lastAttackTime = Time.time;
+    }
+
+    //paces the stage in uneven intervals
+    void Patrol()
+    {
+        if (targetDistance <= Mathf.Abs(lastLocation.x - transform.position.x))
+        {
+            direction = -direction;
+            targetDistance = GetTargetDistance();
+            lastLocation = new Vector2(transform.position.x, transform.position.y);
+        }
+        if (direction < 0)
+            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
+
+    void PauseMovement()
+    {
+        transform.Translate(Vector2.zero);
+    }
+
+    void ResumeMovement()
+    {
+        if (direction < 0)
+            transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
+
+    void TurnAround()
+    {
+        direction = -direction;
+        targetDistance = GetTargetDistance();
+        lastLocation = new Vector2(transform.position.x, transform.position.y);
     }
 }

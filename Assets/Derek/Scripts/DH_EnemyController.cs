@@ -19,6 +19,8 @@ public class DH_EnemyController : MonoBehaviour
     public float moveSpeed = 3f;
 
     public int attackDamage = 10;
+    private float lastAttackTime = 0f;
+    private float attackCooldown = 2f;
 
     //Initial values
     void Start()
